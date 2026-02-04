@@ -1,0 +1,13 @@
+package net.engineeringdigest.journalApp.repository;
+
+import org.bson.types.ObjectId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import net.engineeringdigest.journalApp.entity.JournalEntry;
+
+public interface JournalEntryRepository extends MongoRepository<JournalEntry, ObjectId>{
+
+}
+
+// Controller--> Service--> Repository
