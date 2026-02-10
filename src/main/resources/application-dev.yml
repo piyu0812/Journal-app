@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://piyushahuja575_db_user:Piyu%4008@mydb.bk98xti.mongodb.net/?appName=Mydb
+      database: journaldb
+      auto-index-creation: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /journal
+
+
+
