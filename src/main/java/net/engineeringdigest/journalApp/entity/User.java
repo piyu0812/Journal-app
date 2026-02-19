@@ -26,6 +26,8 @@ public class User {
 
     @NonNull
     private String password;
+    private String email;
+    private boolean sentimentAnalysis;
 
     @DBRef //We are linking the journal_entries and the users
     private List<JournalEntry> journalEntries= new ArrayList<>();
