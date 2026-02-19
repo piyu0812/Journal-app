@@ -21,7 +21,7 @@ public class User {
     private ObjectId id;
 
     @Indexed(unique = true)// This means the username is unique
-    @NonNullgit
+    @NonNull
     private String userName;
 
     @NonNull

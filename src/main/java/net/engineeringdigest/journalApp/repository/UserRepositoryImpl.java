@@ -10,15 +10,16 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class UserRepoitoryImpl {
+public class UserRepositoryImpl {
 
     @Autowired
     MongoTemplate mongoTemplate;
 
     public List<User> getUserForSA() {
         Query query = new Query();
-        query.addCriteria(Criteria.where("name").is("Piyush1102"));
-        List<User> users = mongoTemplate.find(query, User.class);
+        query.addCriteria(Criteria.where("email").regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"));
+        query.addCriteria(Criteria.where("sentimentAnalysis").ne(null).ne(" "));
+        List<User> users= mongoTemplate.find(query,User.class);
         return users;
     }
 }
