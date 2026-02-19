@@ -17,7 +17,7 @@ public class UserRepoitoryImpl {
 
     public List<User> getUserForSA() {
         Query query = new Query();
-        query.addCriteria(Criteria.where("userName").is("Piyush1102"));
+        query.addCriteria(Criteria.where("name").is("Piyush1102"));
         List<User> users = mongoTemplate.find(query, User.class);
         return users;
     }
