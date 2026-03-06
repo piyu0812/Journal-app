@@ -1,8 +1,9 @@
 spring:
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: redis://default:TARNJcteVwVobRXFeNCCOd2AfuvAr428@redis-12584.crce179.ap-south-1-1.ec2.cloud.redislabs.com:12584
+      port: 12584
+      password: redis-12584.crce179.ap-south-1-1.ec2.cloud.redislabs.com
     mongodb:
       uri: mongodb+srv://piyushahuja575_db_user:Piyu%4008@mydb.bk98xti.mongodb.net/?appName=Mydb
       database: journaldb

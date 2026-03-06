@@ -23,11 +23,23 @@ public class WheatherService{
     @Autowired
     AppCache appCache;
 
+    @Autowired
+    RedisService redisService;
+
     public WeatherResponse getWeather(String city)
     {
-        String final_api=appCache.app_Cache.get(AppCache.keys.weather_api.toString()).replace(Placeholders.CITY,city).replace(Placeholders.API_KEY,api_key);
-        ResponseEntity<WeatherResponse> response=restTemplate.exchange(final_api, HttpMethod.GET,null, WeatherResponse.class);
-        WeatherResponse body=response.getBody();
-        return body;
+        WeatherResponse weatherResponse= redisService.get(city,WeatherResponse.class);
+        if(weatherResponse!=null){
+            return weatherResponse;
+        }
+        else{
+            String final_api=appCache.app_Cache.get(AppCache.keys.weather_api.toString()).replace(Placeholders.CITY,city).replace(Placeholders.API_KEY,api_key);
+            ResponseEntity<WeatherResponse> response=restTemplate.exchange(final_api, HttpMethod.GET,null, WeatherResponse.class);
+            WeatherResponse body=response.getBody();
+            if(body!=null){
+                redisService.set(city,body,300l);
+            }
+            return body;
+        }
     }
 }
